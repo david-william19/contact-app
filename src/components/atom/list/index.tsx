@@ -1,6 +1,8 @@
 import styled from "@emotion/styled"
 import { Contact } from "../../../types/contact"
 import { colors } from "../../../data/colors"
+import IconButton from "../iconButton"
+import {MdMoreVert} from "react-icons/md"
 
 const Wrapper = styled.div`
     display: flex;
@@ -18,13 +20,20 @@ const PhonesWrapper = styled.div`
     flex-wrap: wrap;
     gap: 10px;
     width: 100%;
+
+    span {
+        padding: 5px;
+        border: 0.1px solid ${colors.primary};
+        border-radius: 5px;
+    }
 `
 
 const Title = styled.h3`
     width: 100%;
     font-size: 16px;
-    margin: 0;
+    margin-bottom: 10px;
     padding: 0;
+    color: ${colors.primary};
 `
 
 const CardList = (contact: Contact) => {
@@ -35,7 +44,9 @@ const CardList = (contact: Contact) => {
                 {contact.phones.map((phone, index) => {
                             return  <span key={index}>{phone.number}</span>
                         })}
-                        </PhonesWrapper>
+            </PhonesWrapper>
+
+            <IconButton icon={<MdMoreVert />} />
         </Wrapper>
     )
 }

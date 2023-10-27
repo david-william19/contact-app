@@ -4,10 +4,11 @@ interface IconButtonProps {
     icon: React.ReactNode;
     onClick?: () => void;
     type?: 'button' | 'submit' | 'reset';
+    color?: string | undefined;
 }
 
 const ButtonContainer = styled.button`
-    background-color: #000;
+    color: ${props => props.color};
     border: none;
     color: white;
     padding: 12px;
@@ -18,9 +19,9 @@ const ButtonContainer = styled.button`
     display: inline-block;
 `
 
-const IconButton = ({ icon, onClick, ...props }: IconButtonProps) => {
+const IconButton = ({ icon, onClick, color, ...props }: IconButtonProps) => {
     return (
-        <ButtonContainer onClick={onClick} {...props}>
+        <ButtonContainer onClick={onClick} color={color} {...props}>
             {icon}
         </ButtonContainer>
     )

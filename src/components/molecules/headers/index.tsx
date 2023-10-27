@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { colors } from "../../../data/colors";
 import Input from "../../atom/inputs";
+import { MdAddCircle } from "react-icons/md";
 
 const HeaderWrapper = styled.div`
     background-color: ${colors.primary};
@@ -27,12 +28,17 @@ const HeaderTitle = styled.h3`
 `
 
 const HeaderButton = styled.button`
-    background-color: ${colors.secondary};
-    color: #ffffff;
+    background-color: ${colors.platinum};
+    color: ${colors.secondary};
+    font-size: 14px;
+    font-weight: bold;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 `
 
 const Header = () => {
@@ -40,7 +46,10 @@ const Header = () => {
         <HeaderWrapper>
             <HeaderHead>
                 <HeaderTitle>Phonebook</HeaderTitle>
-                <HeaderButton>Add</HeaderButton>
+                <HeaderButton>
+                    <MdAddCircle size="1.2em" />
+                        Add Contact
+                </HeaderButton>
             </HeaderHead>
             <Input placeholder="type name or phone here..." type="text" />
         </HeaderWrapper>
