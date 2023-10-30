@@ -62,7 +62,7 @@ const CardList = (contact: Contact) => {
   const [show, setShow] = useState(false);
 
   const [deleteContact, { loading }] = useMutation(DELETE_CONTACT, {
-    refetchQueries: [{ query: GET_CONTACT_LIST }]
+    refetchQueries: [GET_CONTACT_LIST]
   });
 
   if (loading) {
