@@ -11,7 +11,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@apollo/client';
 import { GET_CONTACT_LIST, POST_CONTACT } from '../../../services/Contact';
-import { useContactContext } from '../../../contexts/Contact';
+import { useContactContext } from '../../../contexts/Contact/ContactProvider';
 
 const HeaderWrapper = styled.div`
   background-color: ${colors.secondary};

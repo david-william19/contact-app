@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.3.2",
     "@styled-icons/material": "^10.47.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "graphql": "^16.8.1",
     "lottie-react": "^2.4.0",
     "lottie-web": "^5.12.2",

@@ -1,5 +1,5 @@
 import './App.css';
-import { ContactProvider } from './contexts/Contact';
+import { ContactProvider } from './contexts/Contact/ContactProvider';
 import ListContact from './pages/list-contact';
 
 function App() {
