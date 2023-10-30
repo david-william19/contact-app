@@ -50,7 +50,7 @@ export const ContactProvider: React.FC<ContactProps> = ({ children }) => {
             variables: {
                 where: {
                     number: {
-                        _ilike: `%${searchTerm}%`
+                        _like: `%${searchTerm}%`
                     }
                 }
             }

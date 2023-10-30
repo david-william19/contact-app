@@ -2,7 +2,7 @@ import MainLayout from '../components/layouts/main';
 import ContactList from '../components/molecules/contactList';
 import Pagination from '../components/atom/Pagination';
 import styled from "@emotion/styled";
-import { useContactContext } from '../contexts/Contact/ContactContext';
+import { useContactContext } from '../contexts/Contact';
 
 function ListContactPage() {
   const {contacts, loading, offset, setOffset} = useContactContext();
