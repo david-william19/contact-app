@@ -6,7 +6,7 @@ import { Delete, Edit } from '@styled-icons/material';
 import Modal from '../modal';
 import { useState } from 'react';
 import HeaderModal from '../modal/header-modal';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { DELETE_CONTACT, GET_CONTACT_LIST } from '../../../services/Contact';
 
 const Wrapper = styled.div`

@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 import { useContactContext } from '../contexts/Contact/ContactContext';
 
 function ListContactPage() {
-  const {contacts, offset, setOffset} = useContactContext();
+  const {contacts, loading, offset, setOffset} = useContactContext();
 
   const ContactWrapper = styled.div`
     width: 100%;
@@ -16,7 +16,7 @@ function ListContactPage() {
     <MainLayout>
         <ContactWrapper>
         {contacts?.length > 0 ? (
-        <ContactList data={contacts} />
+        <ContactList loading={loading} data={contacts} />
       ) : (
         <h1>No data</h1>
       )}

@@ -12,6 +12,7 @@ interface ContactContextType {
     searchContacts: (searchTerm: string) => void;
     setOffset: (offset: number) => void;
     offset: number;
+    loading: boolean;
 }
 
 const ContactContext = createContext<ContactContextType>({
@@ -19,6 +20,7 @@ const ContactContext = createContext<ContactContextType>({
     searchContacts: () => {},
     setOffset: () => {},
     offset: 0,
+    loading: false,
 });
 
 export const useContactContext = () => useContext(ContactContext);
@@ -26,7 +28,7 @@ export const useContactContext = () => useContext(ContactContext);
 export const ContactProvider: React.FC<ContactProps> = ({ children }) => {
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [offset, setOffset] = useState(0);
-    const { data } = useQuery(GET_CONTACT_LIST, {
+    const { data, loading } = useQuery(GET_CONTACT_LIST, {
         variables: {
             limit: 10,
             offset: offset,
@@ -58,7 +60,7 @@ export const ContactProvider: React.FC<ContactProps> = ({ children }) => {
     };
 
     return (
-        <ContactContext.Provider value={{ contacts, searchContacts, offset, setOffset }}>
+        <ContactContext.Provider value={{ contacts, loading, searchContacts, offset, setOffset }}>
             {children}
         </ContactContext.Provider>
     );

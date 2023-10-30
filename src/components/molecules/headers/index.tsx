@@ -9,7 +9,7 @@ import HeaderModal from '../../atom/modal/header-modal';
 import * as Yup from 'yup';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { GET_CONTACT_LIST, POST_CONTACT } from '../../../services/Contact';
 import { useContactContext } from '../../../contexts/Contact/ContactContext';
 
@@ -95,12 +95,6 @@ const InputWrapper = styled.div`
   }
 `;
 
-type SendDataContact = {
-  first_name: string;
-  last_name: string;
-  phones: { number: string }[];
-};
-
 const Header = () => {
   const [open, setOpen] = useState(false);
   const {searchContacts} = useContactContext();
@@ -114,7 +108,7 @@ const Header = () => {
       })
     )
   });
-  const onSubmitContact = (data: SendDataContact) => {
+  const onSubmitContact = (data: any) => {
     AddContactWithPhones({
       variables: {
         first_name: data.first_name,

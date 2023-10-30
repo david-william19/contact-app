@@ -4,7 +4,11 @@ import Button from '.';
 
 test('render button', () => {
   it('should render button', () => {
-    render(<Button color="primary" variant="filled" />);
+    render(
+      <Button color="primary" variant="filled">
+        Button
+      </Button>
+      );
     expect(screen.getByText(/Button/i)).toBeTruthy();
   });
 });
