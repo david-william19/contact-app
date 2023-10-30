@@ -1,22 +1,11 @@
-import { useQuery } from '@apollo/client';
 import MainLayout from '../components/layouts/main';
 import ContactList from '../components/molecules/contactList';
-import { useState } from 'react';
 import Pagination from '../components/atom/Pagination';
-import { GET_CONTACT_LIST } from '../services/Contact';
 import styled from "@emotion/styled";
+import { useContactContext } from '../contexts/Contact/ContactContext';
 
 function ListContactPage() {
-  const [pageNumber, setPageNumber] = useState(10);
-  const { loading, data } = useQuery(GET_CONTACT_LIST, {
-    variables: {
-      limit: 10,
-      offset: pageNumber,
-      order_by: {
-        created_at: 'asc',
-      },
-    }
-  });
+  const {contacts, offset, setOffset} = useContactContext();
 
   const ContactWrapper = styled.div`
     width: 100%;
@@ -26,16 +15,16 @@ function ListContactPage() {
   return (
     <MainLayout>
         <ContactWrapper>
-        {data?.contact.length > 0 ? (
-        <ContactList data={data?.contact} loading={loading} />
+        {contacts?.length > 0 ? (
+        <ContactList data={contacts} />
       ) : (
         <h1>No data</h1>
       )}
       <Pagination
-        length={data?.contact.length}
-        currentPage={pageNumber}
+        length={contacts.length}
+        currentPage={offset}
         totalPages={0}
-        onPageChange={(number) => setPageNumber(number)}
+        onPageChange={(number) => setOffset(number)}
         />
         </ContactWrapper>
     </MainLayout>

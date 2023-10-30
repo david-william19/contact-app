@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from '../../../data/colors';
 
 interface PaginationProps {
   currentPage: number;
@@ -16,15 +17,15 @@ const PaginationContainer = styled.div`
 `;
 
 const PageButton = styled.button<{ isActive?: boolean }>`
-  background-color: ${({ isActive }) => (isActive ? '#007bff' : '#fff')};
-  color: ${({ isActive }) => (isActive ? '#fff' : '#007bff')};
-  border: 1px solid #007bff;
+  background-color: ${({ isActive }) => (isActive ? colors.primary : '#fff')};
+  color: ${({ isActive }) => (isActive ? '#fff' : colors.primary)};
+  border: 1px solid ${colors.primary};
   border-radius: 5px;
   padding: 5px 10px;
   margin: 0 5px;
   cursor: pointer;
   &:hover {
-    background-color: #007bff;
+    background-color: ${colors.primary};
     color: #fff;
   }
 `;
@@ -61,7 +62,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   return (
     <PaginationContainer>
-      <PageButton disabled={currentPage === 10} onClick={() => onPageChange(currentPage - 10)}>
+      <PageButton disabled={currentPage === 0} onClick={() => onPageChange(currentPage - 10)}>
         Previous
       </PageButton>
       {pages.map((page) =>

@@ -11,6 +11,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { gql, useMutation } from '@apollo/client';
 import { GET_CONTACT_LIST, POST_CONTACT } from '../../../services/Contact';
+import { useContactContext } from '../../../contexts/Contact/ContactContext';
 
 const HeaderWrapper = styled.div`
   background-color: ${colors.secondary};
@@ -102,6 +103,7 @@ type SendDataContact = {
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const {searchContacts} = useContactContext();
 
   const validationSchema = Yup.object().shape({
     first_name: Yup.string().required('First name is required'),
@@ -146,7 +148,7 @@ const Header = () => {
             Add Contact
           </HeaderButton>
         </HeaderHead>
-        <Input name={'search_query'} placeholder="type name or phone here..." type="text" />
+        <Input name={'search_query'} onChange={(e) => searchContacts(e.target.value)} placeholder="type name or phone here..." type="text" />
       </HeaderWrapper>
       <Modal show={open}>
         <Box>

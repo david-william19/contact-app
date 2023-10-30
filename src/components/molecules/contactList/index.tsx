@@ -5,7 +5,7 @@ import LoadAnimation from '../../../assets/animation/load-animation.json';
 import styled from '@emotion/styled';
 
 interface ContactProps {
-  data: [Contact];
+  data: Contact[];
   loading: boolean;
 }
 
